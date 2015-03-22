@@ -11,6 +11,10 @@
                 dp;
             if (this.tickFormat !== null && this.tickFormat !== undefined) {
                 if (this._hasTimeField()) {
+                    if(typeof(this.tickFormat) == "function") {
+                        // it must be a d3.time.format instance.
+                        return this.tickFormat;
+                    }
                     returnFormat = d3.time.format(this.tickFormat);
                 } else {
                     returnFormat = d3.format(this.tickFormat);
